@@ -2,7 +2,7 @@
 // PACE Group 2
 
 #include <iostream>		// cout and cin
-#include <cstdlid>		// assuming srand and rand will be used
+#include <cstdlib>		// assuming srand and rand will be used
 #include <ctime>		// use time function
 #include <iomanip>		// array table spacing (setw)
 
@@ -22,12 +22,12 @@ void printTable( /* IN */ const int arrayINT[][10], /* IN */ int tableSize);
 // Function that controls enemy movement
 // Pre:	 pass arrayINT with read/write permission and with rowGuess/colGuess with valid values
 // Post: modifies the array and assigns values to rowLoc and colLoc
-void opposingPlayer( /* INOUT */ int arrayINT[][10], /* IN */ rowGuess, /* IN */ colGuess, /* OUT */ rowLoc, /* OUT */ colLoc );
+void opposingPlayer( /* INOUT */ int arrayINT[][10], /* IN */ int rowGuess, /* IN */ int colGuess, /* OUT */ int rowLoc, /* OUT */ int colLoc );
 
 // Function that allows user to guess ship location
 // Pre:  pass arrayINT with read/write permission and with rowGuess/colGuess with valid values
 // Post: modifies the array and assigns values to rowLoc and colLoc
-void mainPlayer( /* INOUT */ int arrayINT[][10], /* IN */ rowGuess, /* IN */ colGuess, /* OUT */ rowLoc, /* OUT */ colLoc );
+void mainPlayer( /* INOUT */ int arrayINT[][10], /* IN */ int rowGuess, /* IN */ int colGuess, /* OUT */ int rowLoc, /* OUT */ int colLoc );
 
 
 // declare int const TABLE_SIZE, maybe 10?
@@ -35,20 +35,20 @@ void mainPlayer( /* INOUT */ int arrayINT[][10], /* IN */ rowGuess, /* IN */ col
 
 int main()
 {
-	// declare int tableSize
+	// declare int tableSize; local variable for tableSize, prevent from using global constant
 	// declare int shipDestroyed; manages total number of ship destroyed
 	// declare int userWinCounter; tracks total of rounds won
 	// declare int userLossCounter; tracks total of rounds loss
-	// declare int botWinCounter; tracks total of rounds won 
+	// declare int botWinCounter; tracks total of rounds won
 	// declare int botLossCounter; tracks total of rounds loss
 	// declare int rowGuess; user's guess
 	// declare int colGuess; user's guess
 	// declare int colLoc;	actual column location
 	// declare int rowLoc;	actual row location
 	// declare int arrayINT[][]
-	// declare bool roundEnd;
-	// declare bool exit; used for menu? assuming that the game is wrapped in a loop
-	// declare char charExit; prompt use to leave game
+	// bool roundEnd;
+	// bool exit; used for menu? assuming that the game is wrapped in a loop
+	// char charExit; prompt use to leave game
 
 	// assign TABLE_SIZE to tableSize
 
@@ -91,7 +91,7 @@ void printTable( /* IN */ const int arrayINT[][10], /* IN */ int tableSize)
 // Function that controls enemy movement
 // Pre:	 pass arrayINT with read/write permission and with rowGuess/colGuess with valid values
 // Post: modifies the array and assigns values to rowLoc and colLoc
-void opposingPlayer( /* INOUT */ int arrayINT[][10], /* IN */ int rowGuess, /* IN */ int colGuess, /* OUT */ int rowLoc, /* OUT */ int colLoc )
+void opposingPlayer ( /* INOUT */ int arrayINT[][10], /* IN */ int rowGuess, /* IN */ int colGuess, /* OUT */ int rowLoc, /* OUT */ int colLoc )
 {
 	cout << "calling opposingPlayer" << endl;	// stub debug
 }
@@ -103,3 +103,4 @@ void mainPlayer( /* INOUT */ int arrayINT[][10], /* IN */ int rowGuess, /* IN */
 {
 	cout << "calling mainPlayer" << endl;	// stub debug
 }
+
