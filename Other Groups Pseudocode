@@ -21,8 +21,8 @@ void InitBoard(/* INOUT */ BoardType &Board);
 // Currently just sets a random spaces on the board to have isShip = true
 // Still makes sure there are a certain amount of ship spaces (maxShipSpaces)
 // Pre: Board.GridSpace is a 10 by 10 array filled with ~
-// Post: Board.GrideSpace contains 5 ships (One 2 spaces, two 3 space, one 4 spaces, and one 5 spaces)
-//       The ships are either vertically or horizontally orientented and not cut off / overlapping
+// Post: Board.GrideSpace contains 5 ships
+//       That are not overlapping
 //       '#' represents where the ships have been placed
 void PlaceShips(/* INOUT */ BoardType &Board);
 
@@ -50,6 +50,26 @@ int main()
     int guessCounter;  // counter for the number of guesses
     BoardType computerBoard;   // board for the computer to store data
     BoardType userBoard;       // board to be printed out to the user
+
+    InitBoard(userBoard);
+    InitBoard(computerBoard);
+    PlaceShips(computerBoard);
+
+    cout << "vvv Users POV vvv" << endl; //Debug, will be removed later
+    for (int column = 0; column < GRID_SIZE; column++){
+      for (int row = 0; row < GRID_SIZE; row++){
+        //cout << userBoard.GridSpace[column][row];
+      }
+    }
+
+    cout << endl << endl << endl; // Spacing
+
+    cout << "vvv Computer POV vvv" << endl; // Also Debug
+    for (int column = 0; column < GRID_SIZE; column++){
+      for (int row = 0; row < GRID_SIZE; row++){
+        //cout << computerBoard.GridSpace[column][row];
+      }
+    }
 
     // do while loop for while the user wants to play the game
       // set hitCounter and guessCounter to zero
@@ -88,53 +108,18 @@ void InitBoard(/* INOUT */ BoardType &Board){
 // Currently just sets a random spaces on the board to have isShip = true
 // Still makes sure there are a certain amount of ship spaces (maxShipSpaces)
 // Pre: Board.GridSpace is a 10 by 10 array filled with ~
-// Post: Board.GrideSpace contains 5 ships (One 2 spaces, two 3 space, one 4 spaces, and one 5 spaces)
-//       The ships are either vertically or horizontally orientented and not cut off / overlapping
+// Post: Board.GrideSpace contains 5 ships
+//       That are not overlapping
 //       '#' represents where the ships have been placed
 void PlaceShips(/* INOUT */ BoardType &Board){
-  // While all ships are not equal to their max values (one 2 space, two 3 space, one 4 space, and one 5 space)
-    // Set random seed to equal time(NULL)
-    // set variable randomPos equal to rand() % 100 <- 100 potential positions on the grid
-    // set variable generateShip equal to rand() % 4 + 1 <- 4 ships.. ship sizes
-    // set variable vertOrHori equal to rand() % 0 + 1 <- 0 (vert) to 1 (hori).. ship position
+  cout << "calling PlaceShips" << endl;
+  // srand(time(null))
 
-    /*!!! Generate Ships !!!*/
-
-    // if (generateShip == 1 && 2space != 1) - 2 space ship, only should go through once
-      // if (vertOrHori == 1) - horizontal positioning
-        //for column = 0, column is less than 2, increment column
-          // set Board.GridSpace[randomPos][column] equal to '#'
-      // else - vertical positioning
-        //for row = 0, row is less than 2, increment row
-          // set Board.GridSpace[randomPos][row] equal to '#'
-      // Increment 2space
-
-    // if (generateShip == 2 && 3space != 2) - 3 space ship, only should go through twice
-      // if (vertOrHori == 1)                               - horizontal positioning
-        //for column = 0, column is less than 2, increment column
-          // set Board.GridSpace[randomPos][column] equal to '#'
-      // else                                               - vertical positioning
-        //for row = 0, row is less than 2, increment row
-          // set Board.GridSpace[randomPos][row] equal to '#'
-      // Increment 3space    
-
-    // if (generateShip == 3 && 3space != 1) - 4 space ship, only should go through once
-      // if (vertOrHori == 1)                               - horizontal positioning
-        //for column = 0, column is less than 2, increment column
-          // set Board.GridSpace[randomPos][column] equal to '#'
-      // else                                               - vertical positioning
-        //for row = 0, row is less than 2, increment row
-          // set Board.GridSpace[randomPos][row] equal to '#'
-      // Increment 4space
-
-    // if (generateShip == 4 && 3space != 1) - 5 space ship, only should go through once
-      // if (vertOrHori == 1)                               - horizontal positioning
-        //for column = 0, column is less than 2, increment column
-          // set Board.GridSpace[randomPos][column] equal to '#'
-      // else                                               - vertical positioning
-        //for row = 0, row is less than 2, increment row
-          // set Board.GridSpace[randomPos][row] equal to '#'
-      // Increment 5space    
-
-    // PROBLEMS -> Still will overlap, and will spawn out of the grid
+  // for variable ships equals 0 and ships < 5, increment ships
+    // posX equals a random number between 0 and 10
+    // posY equals a random number between 0 and 10
+    // if Board.GridSpace[posX][posY] != '#' (Position doesn't already have a ship)
+      // set Board.GridSpace[posX][posY] = '#'
+    // else 
+      // decrement ships
 }
